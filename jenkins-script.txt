@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+        stage ('Setting up workspace') {
+           steps{
+               git branch: 'main', url : 'https://github.com/Albinvadakan/cicd-development.git'
+               nodejs('node-js-latest') {
+                   sh 'npm install'
+               }
+           }
+        }
+     }
+      stages {
+        stage ('testing application') {
+           steps{
+                  echo 'testing application'
+           }
+        }
+     }
+      stages {
+        stage ('building application') {
+           steps{
+               nodejs('node-js-latest') {
+                  sh 'npm run prod-build'
+               }
+           }
+        }
+     }
+     stages {
+        stage ('deploying application') {
+           steps{
+              echo 'application deployement'
+           }
+        }
+     }
+}
