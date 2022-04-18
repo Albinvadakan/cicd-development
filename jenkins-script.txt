@@ -10,15 +10,11 @@ pipeline {
                }
            }
         }
-     }
-      stages {
         stage ('testing application') {
            steps{
                   echo 'testing application'
            }
         }
-     }
-      stages {
         stage ('building application') {
            steps{
                nodejs('node-js-latest') {
@@ -26,8 +22,6 @@ pipeline {
                }
            }
         }
-     }
-     stages {
         stage ('deploying application') {
            steps{
               echo 'application deployement'
